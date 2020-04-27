@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+	"time"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -13,7 +15,7 @@ func main () {
 
 	srv := &http.Server{
 		Handler:      r,
-		Addr:         ":8090",
+		Addr:         ":8080",
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 10 * time.Second,
 	}
