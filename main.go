@@ -10,6 +10,7 @@ import (
 	"syscall"
 
 	"github.com/gorilla/mux"
+	logrus "github.com/sirupsen/logrus"
 )
 
 func main () {
@@ -48,10 +49,11 @@ func waitForShutdown(srv *http.Server) {
 	defer cancel()
 	srv.Shutdown(ctx)
 
-	log.Println("Shutting down")
+	log.Println("Shutting down...")
 	os.Exit(0)
 }
 
 func indexHandler (w http.ResponseWriter, r *http.Request) {
+	logrus.Info("uri : %s", r.RequestURI)
 	w.Write([]byte("Welcome to Go simple application!"))
 }
